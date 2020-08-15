@@ -23,16 +23,15 @@ def create_app(test_config=None):
     @app.route('/job')   
     @requires_auth('get:job-list')
     def ShowJob(jwt):
-        try:
-            jobs=[r.format() for r in Job.query.all()]
-        except Exception:
-            abort(422)
+   
+        jobs=[r.format() for r in Job.query.all()]
+      
         return jsonify ({
             "success":True,
             "ALL_jobs":jobs,
             "TotalJobs": len(Job.query.all()),
+            })
             
-        })
     @app.route('/persons', methods=['GET'])
     @requires_auth('get:persons-detail')
     def ShowPerson(jwt):
@@ -111,7 +110,15 @@ def create_app(test_config=None):
             "TotalPerson": len(Person.query.all())
         })
         # Error Handling
-
+        
+        @app.errorhandler(AuthError)
+        def get_authError(get):
+         return jsonify({
+        'success': False,
+        'error': error.status_code,
+        'message': error.error
+        }), 401
+        
         @app.errorhandler(422)
         def unprocessable(error):
             return jsonify({
@@ -120,13 +127,6 @@ def create_app(test_config=None):
             "message": "unprocessable"
             }), 422
 
-        @app.errorhandler(AuthError)
-        def get_authError(get):
-         return jsonify({
-        'success': False,
-        'error': get.status_code,
-        'message': get.error
-        }),401
 
         @app.errorhandler(405)
         def methode_not_allwod(error):
