@@ -62,7 +62,7 @@ CREATE TABLE public."Person" (
     id integer NOT NULL,
     name character varying NOT NULL,
     phone integer NOT NULL,
-    email character varying(20) NOT NULL,
+    email character varying(120) NOT NULL,
     job_id integer NOT NULL
 );
 
@@ -123,8 +123,8 @@ ALTER TABLE ONLY public."Person" ALTER COLUMN id SET DEFAULT nextval('public."Pe
 COPY public."Job" (id, job_title) FROM stdin;
 1	Manager
 2	Supervisor
+3	software_engineer
 4	Programmer
-3	Softwar_Engineer
 \.
 
 
@@ -133,42 +133,18 @@ COPY public."Job" (id, job_title) FROM stdin;
 --
 
 COPY public."Person" (id, name, phone, email, job_id) FROM stdin;
-47	ssaara	50987755	Noura@outlook.sa	4
-48	ssaara	50987755	Noura@outlook.sa	4
-49	ssaara	50987755	Noura@outlook.sa	4
-50	ssaara	50987755	Noura@outlook.sa	4
-51	ssaara	50987755	Noura@outlook.sa	4
-52	Fatmah	50987755	Fatmah@outlook.sa	4
-40	ssssss	50987755	Fatmah@outlook.sa	4
-53	ssaara	50987755	Noura@outlook.sa	4
-54	Fatmah	50987755	Fatmah@outlook.sa	4
-17	Noura	50987755	Noura@outlook.sa	4
-55	Fatmah	50987755	Fatmah@outlook.sa	4
-18	Noura	50987755	Noura@outlook.sa	4
-56	ssaara	50987755	Noura@outlook.sa	4
-19	Noura	50987755	Noura@outlook.sa	4
-20	Noura	50987755	Noura@outlook.sa	4
-57	ssssss	50987755	Fatmah@outlook.sa	4
-21	Noura	50987755	Noura@outlook.sa	4
-58	ssaara	50987755	Noura@outlook.sa	4
-59	ssaara	50987755	Noura@outlook.sa	4
-46	ssssss	50987755	Fatmah@outlook.sa	4
-24	Noura	50987755	Noura@outlook.sa	4
-25	Noura	50987755	Noura@outlook.sa	4
-26	ssaara	50987755	Noura@outlook.sa	4
-27	ssaara	50987755	Noura@outlook.sa	4
-28	ssaara	50987755	Noura@outlook.sa	4
-29	ssaara	50987755	Noura@outlook.sa	4
-30	ssaara	50987755	Noura@outlook.sa	4
-31	ssaara	50987755	Noura@outlook.sa	4
-32	ssaara	50987755	Noura@outlook.sa	4
-33	ssaara	50987755	Noura@outlook.sa	4
-34	ssaara	50987755	Noura@outlook.sa	4
-35	ssaara	50987755	Noura@outlook.sa	4
-36	ssaara	50987755	Noura@outlook.sa	4
-37	ssaara	50987755	Noura@outlook.sa	4
-38	ssaara	50987755	Noura@outlook.sa	4
-39	ssaara	50987755	Noura@outlook.sa	4
+2	Wejdan	503337232	Wejdan@outlook.sa	1
+3	Ahmed	503337232	Ahmed@outlook.com	2
+4	Mohammed	503337232	Mohammed@outlook.com	3
+5	Afnan	503337232	Afnan@outlook.com	4
+6	Fatmah	503337232	Fatmah@outlook.com	4
+7	Joly	503337232	Joly@outlook.com	3
+8	Nada	503337232	Nada@outlook.com	3
+9	Sam	503337232	Sam@outlook.com	3
+10	Aymn	503337232	Aymn@outlook.com	1
+11	Mone	503337232	Mone@outlook.com	2
+12	Jna	503337232	Jna@outlook.com	4
+13	Dema	503337232	Dema@outlook.com	4
 \.
 
 
@@ -177,7 +153,6 @@ COPY public."Person" (id, name, phone, email, job_id) FROM stdin;
 --
 
 COPY public.alembic_version (version_num) FROM stdin;
-2a70a543dcdd
 \.
 
 
@@ -192,7 +167,7 @@ SELECT pg_catalog.setval('public."Job_id_seq"', 4, true);
 -- Name: Person_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public."Person_id_seq"', 59, true);
+SELECT pg_catalog.setval('public."Person_id_seq"', 13, true);
 
 
 --

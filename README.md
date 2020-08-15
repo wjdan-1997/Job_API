@@ -2,12 +2,13 @@
 
 
 # Motivation 
-This is my capstone project submission for Udacity Full-Stack Developer Nanodegree program.
+This is my capstone project submission for Udacity Full-Stack Developer Nanodegree program. I am excisted to have a vaild life api that can be used for any frontend. 
 
 # The Goal For project
-This api well help to add job an person
-- Design data models with relations use SQLAchemy,m n
-- Design HTTP API 
+This api well add new person to the database. 
+- Design data models with relations use SQLAchemy
+- Design endpoint
+- Create to tables with many to one relationship  
 
 # Getting Started 
 - Installing Dependencies
@@ -108,4 +109,23 @@ To run the tests, run
 ```bash
 source setup.sh
 python test_app.py
+
+
 ```
+
+Heroku:
+Please use the below API address to make any request to the database
+API address : https://capstoneappjo.herokuapp.com/
+
+- To set up heroku:
+- Create Heroku app
+heroku create name_of_your_app
+- Add git remote for Heroku to local repository
+git remote add heroku heroku_git_url
+- Add postgresql add on for our database
+heroku addons:create heroku-postgresql:hobby-dev --app name_of_your_application
+- Push it up
+git push heroku master
+- Once your app is deployed, run migrations by running:
+ heroku run python manage.py db upgrade --app name_of_your_application
+
