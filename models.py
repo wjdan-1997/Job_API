@@ -20,8 +20,30 @@ def setup_db(app, database_path=database_path):
     db.create_all()
 
 
+'''
+Extend the base Model class to add common methods
+'''
+class inheritedClassName(db.Model):
+    __abstract__ = True
 
-class Person(db.Model):
+    def insert(self):
+        db.session.add(self)
+        db.session.commit()
+
+    def delete(self):
+        db.session.delete(self)
+        db.session.commit()
+
+    def update(self):
+        db.session.commit()
+
+class Person(inheritedClassName):
+    id: int
+    name: String
+    phone: String
+    email: String
+    job_id: int
+
     __tablename__='Person'
     id = Column(Integer, primary_key=True)
     name = Column(String, nullable=False)
@@ -43,29 +65,16 @@ class Person(db.Model):
             'email':self.email,
             'job_id':self.job_id
         } 
-    
-    def insert(self):
-        db.session.add(self)
-        db.session.commit()
 
-    def delete(self):
-        db.session.delete(self)
-        db.session.commit()
-    def update(self):
-        db.session.commit()
-class Job(db.Model):
+
+class Job(inheritedClassName):
+    id :int
+    job_title:String
     __tablename__ = 'Job'
     id = Column(Integer, primary_key=True)
     job_title = Column(String, nullable=False)
 
-    def insert(self):
-        db.session.add(self)
-        db.session.commit()
-    def delete(self):
-        db.session.delete(self)
-        db.session.commit()
-    def update(self):
-        db.session.commit()
+    
 
     def __init__(self, job_title ):
         self.job_title = job_title

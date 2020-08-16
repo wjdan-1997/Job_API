@@ -11,18 +11,65 @@ This api well add new person to the database.
 - Create to tables with many to one relationship  
 
 # Getting Started 
-- Installing Dependencies
-- Once you have your virtual environment setup, running:
-```bash
-pip install -r requirements.txt
+# Installing Dependencies
 
+- Python 3.8.4
+- Follow instructions to install the correct version of Python for your platform
+in the python docs.
+# Virtual Environment (venv)
+- Once you have your virtual environment setup,  
+- To create virtual environment: 
+```bash
+   py -m venv env 
+- to activate:
+  source env/Scripts/activate
 ```
-This will install all of the required packages we selected within the requirements.txt file.
-- Start the app locally:
+# PIP Dependecies
+- Once you have your venv setup and running, install dependencies by navigating
+to the root directory and running:
+```bash
+   pip3 install -r requirements.txt
+```
+- This will install all of the required packages included in the requirements.txt file.
+ 
+
+# Start the app locally:
+- Once you create the database, open your terminal, navigate to the root folder, and run:
+
+python manage.py db init
+python manage.py db migrate
+python manage.py db upgrade
+
+- After running, don't forget modify 'SQLALCHEMY_DATABASE_URI' variable.
+
 ```bash
 source setup.sh
-python app.py
 ```
+# Local Testing
+- To test your local installation, run the following command from the root folder:
+
+python test_app.py
+- If all tests pass, your local installation is set up correctly.
+# Running the server
+- From within the root directory, first ensure you're working with your created
+venv. To run the server, execute the following:
+
+export FLASK_APP=app
+export FLASK_DEBUG=true
+export FLASK_ENV=development
+flask run
+
+
+# DATA MODELING:
+- MODELS.PY
+The schema for the database and helper methods to simplify API behavior are in models.py:
+
+There are three tables created: Person, Job
+The Person table is used by the role 'Manager' to add  new Person also delete and update person and their informations .
+The Person table has a foreign key on the Job table for job_id.
+The Job table is used by the role 'Supervisor' to get all of jobs 
+
+
 # Endpoints
 GET '/job'
 GET /persons'
@@ -104,11 +151,7 @@ PATCH '/person2/<int:id>'
 the permissions:
     "get:job-list",
     "get:persons-detail"
-## Testing
-To run the tests, run
-```bash
-source setup.sh
-python test_app.py
+
 
 
 ```

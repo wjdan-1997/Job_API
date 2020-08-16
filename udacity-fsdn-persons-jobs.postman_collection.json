@@ -1,0 +1,226 @@
+{
+	"info": {
+		"_postman_id": "760e27e2-fe14-4d77-8703-cfa961ea344b",
+		"name": "udacity-fsdn-persons-jobs",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "manager",
+			"item": [
+				{
+					"name": "http://127.0.0.1:5000/person",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"samen\",\r\n    \"phone\":\"503337232\",\r\n    \"email\":\"samen@outlook.com\",\r\n    \"job_id\":4\r\n}"
+						},
+						"url": {
+							"raw": "https://capstoneappjo.herokuapp.com/person1",
+							"protocol": "https",
+							"host": [
+								"capstoneappjo",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"person1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "http://127.0.0.1:5000/person/9",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://capstoneappjo.herokuapp.com/person3/14",
+							"protocol": "https",
+							"host": [
+								"capstoneappjo",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"person3",
+								"14"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "http://127.0.0.1:5000/person/6",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"jmena\",\r\n    \"phone\":\"50987755\",\r\n    \"email\":\"jemna@outlook.sa\",\r\n    \"job_id\":4\r\n}"
+						},
+						"url": {
+							"raw": "https://capstoneappjo.herokuapp.com/person2/12",
+							"protocol": "https",
+							"host": [
+								"capstoneappjo",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"person2",
+								"12"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IlB3VkFKTFhfNmF6cGFDSl9rY1ZDUiJ9.eyJpc3MiOiJodHRwczovL2ZzZG5qby51cy5hdXRoMC5jb20vIiwic3ViIjoiYXV0aDB8NWVmNGZlNWY3Y2JjODUwMDE5MmExYjYzIiwiYXVkIjoicGVyc29uIiwiaWF0IjoxNTk3NTAxOTYxLCJleHAiOjE1OTc1MDkxNjEsImF6cCI6Ik5GcDBMTU5WdVBOajVzWmoyS1FqUHAyNU9SbFplU25PIiwic2NvcGUiOiIiLCJwZXJtaXNzaW9ucyI6WyJkZWxldGU6cGVyc29uIiwicG9zdDpwZXJzb24iLCJ1cGRhdGU6cGVyc29uIl19.HaeV1hP8URmVr8-V-T5CyYQdXNMCji17U0pxTkrZg-Dup846hOAOIEzKLv0GYJSdKVe8E3B-vRD0w3MJqMEhbKDwdbAshtsnu4RmqqJ9FKOS0FlaQ_wvVmYu1GtDA95uRw9eEuouxSNFzSYvH96PrRWmFQmidxZ8cX0mQMGJH7Rjvqk5xQe9KVkx1Yx3rEDysjeZ-LjVVFglcTiNIbdHzjNMFWlTJqjzZbr5QQcca_rRt688DtpMXJBeNDwwXUmPzVAmxstM_c60BwTAg3AefcY4u2DkXBpAX6r41XxXE5RdezN6KU39iVuLBxS0pjd-VkBeSk_pWsQH-kgJrHMBCg",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "4cc2b6f1-8168-42c7-a8ec-d92b7e81c334",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "07165990-6f80-4e69-ae48-b4c1ffc59422",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "supervisor ",
+			"item": [
+				{
+					"name": "http://127.0.0.1:5000/job",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "19730738-365d-4194-8d07-f7efea9a73fa",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://capstoneappjo.herokuapp.com/job",
+							"protocol": "https",
+							"host": [
+								"capstoneappjo",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"job"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "http://127.0.0.1:5000/person",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://capstoneappjo.herokuapp.com/persons",
+							"protocol": "https",
+							"host": [
+								"capstoneappjo",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"persons"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IlB3VkFKTFhfNmF6cGFDSl9rY1ZDUiJ9.eyJpc3MiOiJodHRwczovL2ZzZG5qby51cy5hdXRoMC5jb20vIiwic3ViIjoiYXV0aDB8NWVmNjA1OWI3Y2JjODUwMDE5MmExZmE3IiwiYXVkIjoicGVyc29uIiwiaWF0IjoxNTk3NTAxODgxLCJleHAiOjE1OTc1MDkwODEsImF6cCI6Ik5GcDBMTU5WdVBOajVzWmoyS1FqUHAyNU9SbFplU25PIiwic2NvcGUiOiIiLCJwZXJtaXNzaW9ucyI6WyJnZXQ6am9iLWxpc3QiLCJnZXQ6cGVyc29ucy1kZXRhaWwiXX0.w8XZCwAyT0iuRxmTf_0m8a9H5woX5vzGR4M-Yon52NNCI9bTjyEI-7SKyW6ISoPZFOBzO7q7lQzNZUJVIfiV9GnoDf232CiqM-YlMFhMyeEgp2qwLONEmGPJKz3g5ssmNpTNfMH0wK19b1jj2xapY1vfbBCDLjAcQ28PN8Xi4UMzrQ4sE7AZESgNTYDuw0Hil0sG0bam6Jt29eZHvGYoQisfcprGuownVYXZ3orbYs11EgyrzUT-Lmql0I2lI7S0C0eIOGbk8NDWNsejiX83S-8-b-Rtjz2-ZPuciPlGjWQzNlmqFdXVlX7YiwJNdeBEGSQmTrpakecgffdR2JTsAQ",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "bfd89480-5d23-46af-bd48-4ce42a77d8be",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "af380cdf-07d3-40bc-a31b-c17f04e226b1",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"protocolProfileBehavior": {}
+}

@@ -81,7 +81,7 @@ class CapstoneCase(unittest.TestCase):
 
 
     def test_delete_person_success(self):
-        res = self.client().delete('/person3/2',
+        res = self.client().delete('/person3/4',
         headers=dict(
             Authorization='Bearer ' + os.environ['manger_token']
             )
@@ -91,7 +91,7 @@ class CapstoneCase(unittest.TestCase):
         self.assertEqual(data['success'],True)
 
     def test_update_person_success(self):
-        res = self.client().patch('/person2/3',json=self.update,
+        res = self.client().patch('/person2/5',json=self.update,
         headers=dict(
             Authorization='Bearer ' + os.environ['manger_token']
             )
@@ -129,7 +129,7 @@ class CapstoneCase(unittest.TestCase):
          )
         self.assertEqual(res.status_code, 404)
         def test_delete_person_error_behavior(self):
-            res = self.client().delete('/person3/4',
+            res = self.client().delete('/person3/6',
         headers=dict(
             Authorization='Bearer ' + os.environ['manger_token']
             )
