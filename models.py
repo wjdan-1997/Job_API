@@ -1,7 +1,7 @@
-import os 
+import os
 from sqlalchemy import Column, String, Integer, ForeignKey
-from flask_sqlalchemy import SQLAlchemy 
-import json 
+from flask_sqlalchemy import SQLAlchemy
+import json
 
 
 database_path = os.environ['DATABASE_URL']
@@ -12,6 +12,8 @@ db = SQLAlchemy()
 setup_db(app)
     binds a flask application and a SQLAlchemy service
 '''
+
+
 def setup_db(app, database_path=database_path):
     app.config["SQLALCHEMY_DATABASE_URI"] = database_path
     app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
@@ -23,6 +25,8 @@ def setup_db(app, database_path=database_path):
 '''
 Extend the base Model class to add common methods
 '''
+
+
 class inheritedClassName(db.Model):
     __abstract__ = True
 
@@ -37,6 +41,7 @@ class inheritedClassName(db.Model):
     def update(self):
         db.session.commit()
 
+
 class Person(inheritedClassName):
     id: int
     name: String
@@ -44,43 +49,42 @@ class Person(inheritedClassName):
     email: String
     job_id: int
 
-    __tablename__='Person'
+    __tablename__ = 'Person'
     id = Column(Integer, primary_key=True)
     name = Column(String, nullable=False)
     phone = Column(Integer, nullable=False)
-    email= Column(String(120), nullable=False)
-    job_id=db.Column(db.Integer, db.ForeignKey(
+    email = Column(String(120), nullable=False)
+    job_id = db.Column(db.Integer, db.ForeignKey(
         'Job.id'), nullable=False)
 
     def __init__(self, name, phone, email, job_id):
         self.name = name
-        self.phone = phone 
+        self.phone = phone
         self.email = email
         self.job_id = job_id
+
     def format(self):
         return{
-            'id':self.id,
-            'name':self.name,
-            'phone':self.phone,
-            'email':self.email,
-            'job_id':self.job_id
-        } 
+            'id': self.id,
+            'name': self.name,
+            'phone': self.phone,
+            'email': self.email,
+            'job_id': self.job_id
+        }
 
 
 class Job(inheritedClassName):
-    id :int
-    job_title:String
+    id: int
+    job_title: String
     __tablename__ = 'Job'
     id = Column(Integer, primary_key=True)
     job_title = Column(String, nullable=False)
 
-    
-
-    def __init__(self, job_title ):
+    def __init__(self, job_title):
         self.job_title = job_title
-        
+
     def format(self):
         return{
-            'id':self.id,
-            'job_title':self.job_title
+            'id': self.id,
+            'job_title': self.job_title
         }

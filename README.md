@@ -1,6 +1,4 @@
 # Full Stack Capstone API using the Auth 0 for authentication 
-
-
 # Motivation 
 This is my capstone project submission for Udacity Full-Stack Developer Nanodegree program. I am excisted to have a vaild life api that can be used for any frontend. 
 
@@ -31,20 +29,6 @@ to the root directory and running:
    pip3 install -r requirements.txt
 ```
 - This will install all of the required packages included in the requirements.txt file.
- 
-
-# Start the app locally:
-- Once you create the database, open your terminal, navigate to the root folder, and run:
-
-python manage.py db init
-python manage.py db migrate
-python manage.py db upgrade
-
-- After running, don't forget modify 'SQLALCHEMY_DATABASE_URI' variable.
-
-```bash
-source setup.sh
-```
 # Local Testing
 - To test your local installation, run the following command from the root folder:
 
@@ -58,18 +42,6 @@ export FLASK_APP=app
 export FLASK_DEBUG=true
 export FLASK_ENV=development
 flask run
-
-
-# DATA MODELING:
-- MODELS.PY
-The schema for the database and helper methods to simplify API behavior are in models.py:
-
-There are three tables created: Person, Job
-The Person table is used by the role 'Manager' to add  new Person also delete and update person and their informations .
-The Person table has a foreign key on the Job table for job_id.
-The Job table is used by the role 'Supervisor' to get all of jobs 
-
-
 # Endpoints
 GET '/job'
 GET /persons'

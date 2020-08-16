@@ -1,5 +1,5 @@
 import os
-import json 
+import json
 from flask import request, _request_ctx_stack
 from functools import wraps
 from jose import jwt
@@ -7,15 +7,16 @@ from urllib.request import urlopen
 from os import abort
 
 
-
 AUTH0_DOMAIN = os.environ["AUTH0_DOMAIN"]
 ALGORITHMS = os.environ["ALGORITHMS"]
 API_AUDIENCE = os.environ["API_AUDIENCE"]
 
+
 class AuthError(Exception):
     def __init__(self, error, status_code):
         self.error = error
-        self.status_code = status_code 
+        self.status_code = status_code
+
 
 def get_token_auth_header():
     authO = request.headers.get('Authorization', None)
@@ -24,7 +25,7 @@ def get_token_auth_header():
         raise AuthError({
             'code': 'Authorization_header_missing',
             'description': 'Authorization header is expected'
-        }, 401) 
+        }, 401)
     auth_p = authO.split()
     # print(auth_p)
     if auth_p[0].lower() != 'bearer':
@@ -45,14 +46,12 @@ def get_token_auth_header():
             'description': 'Authorization header must be bearer token'
         }, 401)
     token = auth_p[1]
-    #print(token,"test if its work")
     return token
 
-#    raise Exception('Not Implemented')
+
 
 def check_permissions(permission, payload):
-    # raise Exception('Not Implemented')
-    if 'permissions' not in payload:
+    if'permissions'not in payload:
         raise AuthError({
             'code': 'invalid_claims',
             'description': 'Permissions not included in JWT.'
@@ -96,7 +95,7 @@ def verify_decode_jwt(token):
                     algorithms=ALGORITHMS,
                     audience=API_AUDIENCE,
                     issuer='https://' + AUTH0_DOMAIN + '/')
-                
+
                 return payload
 
             except jwt.ExpiredSignatureError:
@@ -108,7 +107,7 @@ def verify_decode_jwt(token):
             except jwt.JWTClaimsError:
                 raise AuthError({
                     'code': 'invalid_claims',
-                    'description': 'Incorrect claims. Please, check the audience and issuer.'
+                    'description': 'Please, check the audience and issuer.'
                 }, 401)
             except Exception:
                 raise AuthError({
@@ -129,9 +128,9 @@ def requires_auth(permission=''):
         @wraps(f)
         def wrapper(*args, **kwargs):
             token = get_token_auth_header()
-            
+
             payload = verify_decode_jwt(token)
-          
+
             check_permissions(permission, payload)
             return f(payload, *args, **kwargs)
 
