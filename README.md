@@ -1,6 +1,6 @@
-# Full Stack Capstone API using the Auth 0 for authentication 
+# Capstone API using the Auth0, Postman, Heroku
 # Motivation 
-This is my capstone project submission for Udacity Full-Stack Developer Nanodegree program. I am excisted to have a vaild life api that can be used for any frontend. 
+This is my capstone project I am excisted to have a vaild life api that can be used for any frontend. 
 
 # The Goal For project
 This api well add new person to the database. 
